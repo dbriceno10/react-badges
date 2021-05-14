@@ -29,5 +29,15 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "description": "Proyecto del curso de React JS de platzi, va a ser desarrollado clase a clase",
+  "main": "index.js",
+  "keywords": [
+    "React",
+    "js",
+    "javascript",
+    "framework"
+  ],
+  "author": "Daniel Briceño <daniel.b00726@gmail.com>",
+  "license": "ISC"
 }
