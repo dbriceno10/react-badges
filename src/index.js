@@ -6,7 +6,12 @@ import "./global.css"
 
 const container = document.getElementById("app")
 
-ReactDOM.render(<Badge />, container)
+ReactDOM.render(<Badge 
+    firstName="Alejandro" 
+    lastName="Salazar" 
+    jobTittle="Frontend Engineer in Training"       
+    twitter="dbriceno10" 
+    avatarUrl = "https://media-exp1.licdn.com/dms/image/C5603AQFILCh7FRKErA/profile-displayphoto-shrink_200_200/0/1617145732921?e=1626307200&v=beta&t=lkVAqzsfDRPW5nmUDPnXEVA38bpJYTI6R8KKdqWlvxs" />, container)
 //A ReactDOM Siempre hay que darle un elemento, por lo tantolo que vamos a renderizar lo vamos a pasar entre brakets como una etiqueta autoconclusiva para asegurarnos
 
 
