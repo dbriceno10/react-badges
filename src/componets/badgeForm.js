@@ -10,6 +10,7 @@ class BadgeForm extends React.Component {
     }
     handleClick = (e) =>{
         e.preventDefault()
+        console.log("Formulaero enviado")
     }
 
     handleSubmit = (e) =>{
@@ -25,7 +26,7 @@ class BadgeForm extends React.Component {
                         <input onChange={this.handleChange}  className="form-control" type="text" name="firstName"/>
                         {/*Eventos con react, en un imput cuando escribimos, obtenemos un evento onChange, la vamos a manejar con un método de la clase que se debe crear, suele llamarse handleChange */}
                     </div>
-                    <button onClick={this.handleClick} className="btn btn-primary">Save</button>
+                    <button className="btn btn-primary">Save</button>
                 </form>
             </div>
         )
