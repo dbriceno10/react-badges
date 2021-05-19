@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Badge from "./componets/badge"
+// import Badge from "./componets/badge"
 import BadgeNew from "./pages/badgeNew"
 import "bootstrap/dist/css/bootstrap.css"
 import "./global.css"
