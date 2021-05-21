@@ -2,12 +2,13 @@ import React from "react"
 import ReactDOM from "react-dom"
 // import Badge from "./componets/badge"
 import BadgeNew from "./pages/badgeNew"
+import Badges from "./pages/badges"
 import "bootstrap/dist/css/bootstrap.css"
 import "./global.css"
 
 const container = document.getElementById("app")
 
-ReactDOM.render(<BadgeNew 
+ReactDOM.render(<Badges 
     firstName="Alejandro" 
     lastName="Salazar" 
     jobTitle="Frontend Engineer in Training"       
