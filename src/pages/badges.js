@@ -2,6 +2,7 @@ import React from "react"
 import "./styles/Badges.css"
 import Navbar from "../componets/navbar"
 import ConfLogo from "../images/badge-header.svg"
+import BadgesList from "../componets/badgesList"
 class Badges extends React.Component {
     state = {
         data: [
@@ -53,19 +54,8 @@ class Badges extends React.Component {
                     </div>
                     <div className="Badges__list">
                         <div className="Badges__container">
-                            <ul className="list-unstyled">
-                                {this.state.data.map((badge) =>
-                                {
-                                    return(
-                                        //Cada elemento de la lista debe deter un prop key o identificador
-                                        <li key={badge.id}>
-                                            <p>
-                                                {badge.firstName}  {badge.lastName}
-                                            </p>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
+                        <BadgesList badges={this.state.data}/>
+                            
                         </div>
                     </div>
                     
