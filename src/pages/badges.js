@@ -3,6 +3,7 @@ import "./styles/Badges.css"
 import Navbar from "../componets/navbar"
 import ConfLogo from "../images/badge-header.svg"
 import BadgesList from "../componets/badgesList"
+import {Link} from "react-router-dom"
 class Badges extends React.Component {
     state = {
         data: [
@@ -50,7 +51,9 @@ class Badges extends React.Component {
 
                 <div className="Badge__container">
                     <div className="Badges__buttons">
-                        <a href="/badges/new" className="btn btn-primary">New Badge</a>
+                        {/* <a href="/badges/new" className="btn btn-primary">New Badge</a>
+                        Para evitar el recargar la página completa vamos a sustituir el elemento a por un Link */}
+                        <Link to="/badges/new" className="btn btn-primary">New Badge</Link>
                     </div>
                     <div className="Badges__list">
                         <div className="Badges__container">
