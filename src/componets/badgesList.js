@@ -1,23 +1,26 @@
 import React from "react"
-
-class BadgesList extends React.Component {
-render () {
-    return (
-        <ul className="list-unstyled">
-            {this.props.badges.map((badge) =>
-            {
+import "./styles/BadgesList.css"
+class BadgesList extends React.Component{
+    render(){
+        return (
+            <ul className="list-unstyled BadgesList">
+                {this.props.badges.map((badge)=>{
                 return(
-                    //Cada elemento de la lista debe deter un prop key o identificador
-                    <li key={badge.id}>
-                        <p>
-                            {badge.firstName}  {badge.lastName}
-                        </p>
+                    <li key={badge.id} className="BadgesListItem">
+                        <img src={badge.avatarUrl} alt="" className="BadgesListItem__avatar"/>
+                        <div>
+                            <div><strong>{badge.firstName} {badge.lastName}</strong></div>
+                            <div className="Twitter__name">
+                            <span className="Twitter__logo"></span>@{badge.twitter}
+                            </div>
+                            <div>{badge.jobTitle}</div>
+                        </div>
                     </li>
                 )
-            })}
-        </ul>
-    )
-}
+                })}
+            </ul>
+        )
+    }
 }
 
 export default BadgesList

@@ -1,19 +1,14 @@
 import React from "react"
 import ReactDOM from "react-dom"
 // import Badge from "./componets/badge"
-import BadgeNew from "./pages/badgeNew"
-import Badges from "./pages/badges"
+//import BadgeNew from "./pages/badgeNew"
+//import Badges from "./pages/badges"
 import "bootstrap/dist/css/bootstrap.css"
 import "./global.css"
-
+import App from "./componets/app"
 const container = document.getElementById("app")
 
-ReactDOM.render(<Badges 
-    firstName="Alejandro" 
-    lastName="Salazar" 
-    jobTitle="Frontend Engineer in Training"       
-    twitter="dbriceno10" 
-    avatarUrl = "https://media-exp1.licdn.com/dms/image/C5603AQFILCh7FRKErA/profile-displayphoto-shrink_200_200/0/1617145732921?e=1626307200&v=beta&t=lkVAqzsfDRPW5nmUDPnXEVA38bpJYTI6R8KKdqWlvxs" />, container)
+ReactDOM.render(<App />, container)
 
 // ReactDOM.render(<Badge 
 //     firstName="Alejandro" 
