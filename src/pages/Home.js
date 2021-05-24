@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './styles/Home.css';
 import platziconfLogoImage from '../images/platziconf-logo.svg';
-import astronautsImage from '../images/astronauts.svg';
+// import astronautsImage from '../images/astronauts.svg';
+import DrStone from "../images/Dr.Stone.jpg"
 
 export default class Home extends Component {
   render() {
@@ -18,7 +19,8 @@ export default class Home extends Component {
                 className="img-fluid mb-2"
               />
 
-              <h1>Badge Management System</h1>
+              {/* <h1>Badge Management System</h1> */}
+              <h1>Platzi Badges: App para aplicar React JS</h1>
               <Link className="btn btn-primary" to="/badges">
                 Start
               </Link>
@@ -26,7 +28,8 @@ export default class Home extends Component {
 
             <div className="Home__col d-none d-md-block col-md-8">
               <img
-                src={astronautsImage}
+                // src={astronautsImage}
+                src={DrStone}
                 alt="Astronauts"
                 className="img-fluid p-4"
               />
