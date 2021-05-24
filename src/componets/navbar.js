@@ -7,16 +7,16 @@ class Navbar extends React.Component {
         return(
             <div className="Navbar">
                 <div className="container-fluid">
-                    {/* <Link className="Navbar__brand" to="/">
+                    <Link className="Navbar__brand" to="/">
                         <img className="Navbar__brand-logo" src={logo} alt="logo"/>
                         <span className="fw-light">Platzi</span>
                         <span className="fw-bold">Conf</span>
-                    </Link> */}
-                    <a className="Navbar__brand" href="/">
+                    </Link>
+                    {/* <a className="Navbar__brand" href="/">
                         <img className="Navbar__brand-logo" src={logo} alt="logo"/>
                         <span className="fw-light">Platzi</span>
                         <span className="fw-bold">Conf</span>
-                    </a>
+                    </a> */}
                 </div>
             </div>
 

@@ -32,13 +32,14 @@ class BadgeForm extends React.Component {
 
     handleSubmit = (e) =>{
         console.log("Click en el botón")
+        console.log(this.state)
     }
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <h1>New Attendant</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <div>
+                    <div className="form-group">
                         <label>Frist Name</label>
                         <input 
                             onChange={this.props.onChange}  
@@ -90,7 +91,7 @@ class BadgeForm extends React.Component {
                     </div>
                     <button type="button" onClick={this.handleClick} className="btn btn-primary">Save</button>
                 </form>
-            </div>
+            </React.Fragment>
         )
     }
 }
