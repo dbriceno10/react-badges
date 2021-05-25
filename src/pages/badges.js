@@ -4,7 +4,6 @@ import "./styles/Badges.css"
 import ConfLogo from "../images/badge-header.svg"
 import BadgesList from "../componets/badgesList"
 import {Link} from "react-router-dom"
-import { time } from "faker"
 class Badges extends React.Component {
     // state = {
     //     data: [
