@@ -4,87 +4,40 @@ import "./styles/Badges.css"
 import ConfLogo from "../images/badge-header.svg"
 import BadgesList from "../componets/badgesList"
 import {Link} from "react-router-dom"
+import api from "../api"
+//NOTA: Borré algunas notas sobre el ciclo de vida de los componentes, si quieres revisarlos regresa a ese commit o ve la notas
 class Badges extends React.Component {
-    // state = {
-    //     data: [
-    //         {
-    //         id: "2de30c42-9deb-40fc-a41f-05e62b5939a7",
-    //         firstName: "Freda",
-    //         lastName: "Grady",
-    //         email: "Leann_Berge@gmail.com",
-    //         jobTitle: "Legacy Brand Director",
-    //         twitter: "FredaGrady22221-7573",
-    //         avatarUrl: "https://www.gravatar.com/avatar/f63a9c45aca0e7e7de0782a6b1dff40b?d=identicon"
-    //         },
-    //         {
-    //         id: "d00d3614-101a-44ca-b6c2-0be075aeed3d",
-    //         firstName: "Major",
-    //         lastName: "Rodriguez",
-    //         email: "Ilene66@hotmail.com",
-    //         jobTitle: "Human Research Architect",
-    //         twitter: "ajorRodriguez61545",
-    //         avatarUrl: "https://www.gravatar.com/avatar/d57a8be8cb9219609905da25d5f3e50a?d=identicon"
-    //         },
-    //         {
-    //         id: "63c03386-33a2-4512-9ac1-354ad7bec5e9",
-    //         firstName: "Daphney",
-    //         lastName: "Torphy",
-    //         email: "Ron61@hotmail.com",
-    //         jobTitle: "National Markets Officer",
-    //         twitter: "DaphneyTorphy96105",
-    //         avatarUrl: "https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon"
-    //         }
-    //     ]
+    state = {//ahora vamos a traer los datos desde la api, se inicializan como undefinded
+        loading: true,
+        error: null,
+        data: undefined
+    }
+
+    // constructor(props) {//El constructor recibe props, el cual necesitamos para inicializar la SuperClase
+    //     super(props)
+    //     console.log("1.constructor()")
+    //     this.state = {
+    //         data: [],//estado inicial vacío
+    //     }
     // }
 
-    constructor(props) {//El constructor recibe props, el cual necesitamos para inicializar la SuperClase
-        super(props)
-        console.log("1.constructor()")
-        this.state = {
-            data: [],//estado inicial vacío
+    componentDidMount() {
+        //console.log("3.componentDidMount()")
+        //Este componente es el lugar adecuado para realizar una petición de datos, o actualización
+        this.fetchData()
+    }
+
+    //Este fetchData al que hacemos referencia (con this) es un método de la clase que estamos declarando, no el fetch nativo de javascript
+    fetchData = async () => {
+        this.setState({ loading: true, error: null })//Declaramos el estado de loading en true y error en null, si no es la primera vez que se llama, se vuelve a pasar loading como true, y si existía un error este se cancela
+
+        try {
+            const data = await api.badges.list()
+            this.setState({ loading: false, data: data })//si obtenemos los datos los guardamos
+        } catch(error) {
+        this.setState({ loading: false, error: error })
         }
     }
-
-    componentDidMount() {
-        console.log("3.componentDidMount()")
-        //setTimeout nos regresa un valor, un "id" que podemos caturar en una costante para cortar la llamada asíncrona en caso de ser necesario
-        this.timeOutId = setTimeout(() => {//Actualización
-            this.setState({
-                data: [
-                    {
-                        id: "2de30c42-9deb-40fc-a41f-05e62b5939a7",
-                        firstName: "Freda",
-                        lastName: "Grady",
-                        email: "Leann_Berge@gmail.com",
-                        jobTitle: "Legacy Brand Director",
-                        twitter: "FredaGrady22221-7573",
-                        avatarUrl: "https://www.gravatar.com/avatar/f63a9c45aca0e7e7de0782a6b1dff40b?d=identicon"
-                    },
-                    {
-                        id: "d00d3614-101a-44ca-b6c2-0be075aeed3d",
-                        firstName: "Major",
-                        lastName: "Rodriguez",
-                        email: "Ilene66@hotmail.com",
-                        jobTitle: "Human Research Architect",
-                        twitter: "ajorRodriguez61545",
-                        avatarUrl: "https://www.gravatar.com/avatar/d57a8be8cb9219609905da25d5f3e50a?d=identicon"
-                    },
-                    {
-                        id: "63c03386-33a2-4512-9ac1-354ad7bec5e9",
-                        firstName: "Daphney",
-                        lastName: "Torphy",
-                        email: "Ron61@hotmail.com",
-                        jobTitle: "National Markets Officer",
-                        twitter: "DaphneyTorphy96105",
-                        avatarUrl: "https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon"
-                    }
-                ]
-            })
-        }, 3000)
-
-        
-    }
-
     //junto a esa actualiación se llama a:
     componentDidUpdate(propsPrevios, estadoPrevio){
         console.log("5.componentDidUpdate")
@@ -107,13 +60,20 @@ class Badges extends React.Component {
 
     //Momento antes de que se vaya el componente de DOM
     componentWillUnmount() {
-        console.log("6.componentWillUnmount")
-        clearTimeout(this.timeOutId)//en caso de que la llamada asíncrona del setTimeOut se haya quedado pendiente, debido a que el componente fue desmontado antes de que los datos llegaran, clearTimeout va a cancelar el evío de esos datos, este tipo de medidad en casos similares es importante para evitar errores, y el consumo de datos cuando no es necesario y pueden consumir recursos en la app, es decir, estamos haciendo una limpieza de memoria. En el caso contrio, de que el componente no fuera desmontado, y los datos del setTimeOut fueran consumidos corectamente, estariamos pasando un id expirado, en cuyo caso no pasa absolutamente nada malo, es normal y no va a ocacionar ningún error
+        //console.log("6.componentWillUnmount")
     }
 
 
     render() {
         console.log("2/4.render()")
+        //manejar cuando loading = true
+        if(this.state.loading === true) {
+            return "Loading..."
+        }
+
+        if(this.state.error) {//this.state.error === true 
+            return `Error: ${this.state.error.message}`
+        }
         return (
             <React.Fragment>
                 {/**<Navbar/>*/}

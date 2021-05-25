@@ -1,7 +1,16 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import "./styles/BadgesList.css"
 class BadgesList extends React.Component{
     render(){
+        if(this.props.badges.length === 0) {
+            return(
+                <div>
+                    <h3>No se encontro ningún dato</h3>
+                    <Link className="btn btn-pimary" to="/badges/new">Crear Nuevo Badge</Link>
+                </div>
+            )
+        }
         return (
             <ul className="list-unstyled BadgesList">
                 {this.props.badges.map((badge)=>{
