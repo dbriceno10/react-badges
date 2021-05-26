@@ -5,6 +5,8 @@ import ConfLogo from "../images/badge-header.svg"
 import BadgesList from "../componets/badgesList"
 import {Link} from "react-router-dom"
 import api from "../api"
+import PageLoading from "../componets/pageLoading"
+import PageError from "../componets/pageError"
 //NOTA: Borré algunas notas sobre el ciclo de vida de los componentes, si quieres revisarlos regresa a ese commit o ve la notas
 class Badges extends React.Component {
     state = {//ahora vamos a traer los datos desde la api, se inicializan como undefinded
@@ -68,11 +70,12 @@ class Badges extends React.Component {
         console.log("2/4.render()")
         //manejar cuando loading = true
         if(this.state.loading === true) {
-            return "Loading..."
+            return <PageLoading />
         }
 
         if(this.state.error) {//this.state.error === true 
-            return `Error: ${this.state.error.message}`
+            //return `Error: ${this.state.error.message}`
+            return <PageError error={this.state.error} />
         }
         return (
             <React.Fragment>
