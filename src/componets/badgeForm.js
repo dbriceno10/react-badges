@@ -30,15 +30,15 @@ class BadgeForm extends React.Component {
         console.log(this.state)
     }
 
-    handleSubmit = (e) =>{
-        console.log("Click en el botón")
-        console.log(this.state)
-    }
+    // handleSubmit = (e) =>{
+    //     console.log("Click en el botón")
+    //     console.log(this.state)
+    // }
     render() {
         return (
             <React.Fragment>
                 <h1>New Attendant</h1>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.props.onSubmit}>
                     <div className="form-group">
                         <label>Frist Name</label>
                         <input 

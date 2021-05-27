@@ -1,10 +1,10 @@
 import React from "react"
 //import Navbar from "../componets/navbar"
-import header from "../images/badge-header.svg"
+import header from "../images/platziconf-logo.svg"
 import "./styles/BadgeNew.css"
 import Badge from "../componets/badge"
 import BadgeForm from "../componets/badgeForm"
-
+import api from "../api"
 class BadgeNew extends React.Component {
     state = { form: {
         firstName: "",
@@ -32,23 +32,36 @@ class BadgeNew extends React.Component {
             }
         })
     }
+
+    handleSubmit = async e => {
+        e.preventDefault()
+        this.setState({ loading: true, error: null })
+
+        try {
+            await api.badges.create(this.state.form)
+            this.setState({ loading: false })
+        } catch (error) {
+            this.setState({ loading: false, error: error })
+        }
+    }
     
     render() {
         return(
             <React.Fragment>
                 {/**<Navbar/>*/}
                 <div className="BadgeNew__hero">
-                    <img className="img-fluid" src={header} alt="Logo"/>
+                    <img className="BadgeNew__hero-img img-fluid" src={header} alt="Logo"/>
                 </div>
 
                 <div className="container">
                     <div className="row">
                         <div className="col">
+                            {/*En el formulario vamos a usar el condicional OR para darle a los campos un valor por Omición o predefinido que puede ser cambiado luego*/}
                             <Badge
-                                firstName={this.state.form.firstName} 
-                                lastName={this.state.form.lastName} 
-                                jobTitle={this.state.form.jobTitle}       
-                                twitter={this.state.form.twitter}
+                                firstName={this.state.form.firstName || "First Name"} 
+                                lastName={this.state.form.lastName || "Last Name"} 
+                                jobTitle={this.state.form.jobTitle || "Job Title"}       
+                                twitter={this.state.form.twitter || "Twitter"}
                                 email={this.state.form.email}
                                 avatarUrl = "https://media-exp1.licdn.com/dms/image/C5603AQFILCh7FRKErA/profile-displayphoto-shrink_200_200/0/1617145732921?e=1626307200&v=beta&t=lkVAqzsfDRPW5nmUDPnXEVA38bpJYTI6R8KKdqWlvxs" />
                         </div>
@@ -58,6 +71,7 @@ class BadgeNew extends React.Component {
                         Hay que pasar los varlores del formulario desde BadgeNew hasta BadgeForm */}
                             <BadgeForm 
                                 onChange={this.handleChange}
+                                onSubmit={this.handleSubmit}
                                 formValues={this.state.form}
                             />
                         </div>
