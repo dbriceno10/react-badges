@@ -5,26 +5,24 @@ import "./styles/BadgeNew.css"
 import Badge from "../componets/badge"
 import BadgeForm from "../componets/badgeForm"
 import api from "../api"
+import PageLoading from "../componets/pageLoading"
 class BadgeNew extends React.Component {
-    state = { form: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        jobTitle: "",
-        twitter: ""
-    } }//inicializamos un estado vación, con una propiedad form también vacía
-    // handleChange = e => {
-    //     const nextForm = this.state.form
-    //     nextForm[e.target.name] = e.target.value
-    //     this.setState({
-    //         //form: {//form va a recibir y guardar la infomación del evento que acaba de ocurrir, esta información ahora le va a pertenecer a BadgeNew
-    //             //[e.target.name]: e.target.value// el problema aquí es que cada vez que se introduzca una nueva información, va a sobre escribir la anterior, existen dos maneras de solucionarlo, la primera es hacer una copia del estado del form
-
-    //         //}
-    //         form: nextForm,// esta es la primera forma
-    //     })
-    // }
-    handleChange = e => {//segunda manera, vamos a "dejar caer" todos los valores que tenia el form anteriormente, y añadimos otro o sobre escribimos el que ya estaba guardado, usando los puntos suspensivos "..." que indica propagación de la propiedad (prop)
+        state = { 
+            loading: false,//este loading se inicializa en falso debido a que estamos enviando los datos
+            error: null,
+            form: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            jobTitle: "",
+            twitter: ""
+        } 
+    }//inicializamos un state vacio, con una propiedad form también vacía
+    
+    
+    //form va a recibir y guardar la infomación del evento que acaba de ocurrir, esta información ahora le va a pertenecer a BadgeNew
+    
+    handleChange = e => {//para evitar que los datos del formulario se sobreestciban, vamos a "dejar caer" todos los valores que tenia el form anteriormente, y añadimos otro o sobre escribimos el que ya estaba guardado, usando los puntos suspensivos "..." que indica propagación de la propiedad (prop)
         this.setState({
             form: {
                 ...this.state.form,
@@ -40,12 +38,19 @@ class BadgeNew extends React.Component {
         try {
             await api.badges.create(this.state.form)
             this.setState({ loading: false })
+
+            //Si hay existo, hacer que al guardar el badge en el formulario nos vayamos directamente a la página de la lista, recoerda que las páginas reciben 3 props, match, history y location
+            this.props.history.push("/badges")
+
         } catch (error) {
             this.setState({ loading: false, error: error })
         }
     }
     
     render() {
+        if (this.state.loading) {
+            return <PageLoading />
+        }
         return(
             <React.Fragment>
                 {/**<Navbar/>*/}
@@ -56,7 +61,6 @@ class BadgeNew extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            {/*En el formulario vamos a usar el condicional OR para darle a los campos un valor por Omición o predefinido que puede ser cambiado luego*/}
                             <Badge
                                 firstName={this.state.form.firstName || "First Name"} 
                                 lastName={this.state.form.lastName || "Last Name"} 
@@ -65,7 +69,6 @@ class BadgeNew extends React.Component {
                                 email={this.state.form.email}
                                 avatarUrl = "https://media-exp1.licdn.com/dms/image/C5603AQFILCh7FRKErA/profile-displayphoto-shrink_200_200/0/1617145732921?e=1626307200&v=beta&t=lkVAqzsfDRPW5nmUDPnXEVA38bpJYTI6R8KKdqWlvxs" />
                         </div>
-                        {/*Vamos a agregar otra columna que va a contener nuesto formulario */}
                         <div className="col-6">
                         {/**Ahora esta información del evento se la vamos a pasar a BadgeForm como un prop, para que el formulario tenga acceso al evento y acceda a la inforación.
                         Hay que pasar los varlores del formulario desde BadgeNew hasta BadgeForm */}
@@ -73,6 +76,7 @@ class BadgeNew extends React.Component {
                                 onChange={this.handleChange}
                                 onSubmit={this.handleSubmit}
                                 formValues={this.state.form}
+                                error={this.state.error}//el error no siempre va a estar definido, puede ser un vacío, nulo, etc, depende de lo que regrese como error,en caso de haberlo
                             />
                         </div>
                     </div>

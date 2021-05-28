@@ -2,17 +2,7 @@ import React from "react"
 //  
 
 class BadgeForm extends React.Component {
-    //para evitar que lance un error, al entrar a la página va a atratar de leer lo que esté en los campos, si no se ha ingresado nada va a tirar un error de l tipo no se puede leer "firstName of null", por ejemplo, por lo tanto hay que inicializar el estado
-    //La inicialización se puede hacer en cualquier línea dentro de nuestro componente, pero lo, por buenas prácticas, es hacerlo al inicio
-    // state = {} // creamos es estado simplemente pasandole un objeto vacío
-    //ahora vamos a inicializar con un arreglo pero de campos "vacíos"
-    // state = {//este se puede inicializar con campos vacíos o algún campo colocado por defecto el cual el usuaro va a poder cambiar cuando escriba en los 
-        // firstName: "",
-        // lastName: "",
-        // email: "",
-        // jobTitle: "",
-        // twitter: ""
-    // }
+    
     // handleChange = (e) =>{
     //     // console.log({e}) //Recordar que cuando se trabaja con react, muchas cosas se van a manejar como si de objetos se tratasen
     //     // console.log({
@@ -91,6 +81,8 @@ class BadgeForm extends React.Component {
                     </div>
                     </div>
                     <button onClick={this.handleClick} className="btn btn-primary">Save</button>
+                    {/* vamos a desplegar un elmento condicionalmente, si el error existe (true, no es nulo), vamos a desplegra el siguiente párrafo */}
+                    {this.props.error && <p className="text-danger" >{this.props.error.message}</p>}
                 </form>
             </React.Fragment>
         )
