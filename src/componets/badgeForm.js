@@ -39,6 +39,7 @@ class BadgeForm extends React.Component {
             <React.Fragment>
                 <h1>New Attendant</h1>
                 <form onSubmit={this.props.onSubmit}>
+                {/*Ya no vamos a usar el método declarado, usaremos el prop que maneja el cambio  */}
                     <div className="form-group">
                         <label>Frist Name</label>
                         <input 
@@ -48,7 +49,7 @@ class BadgeForm extends React.Component {
                             name="firstName"
                             value={this.props.formValues.firstName}
                         />
-                        {/*Eventos con react, en un imput cuando escribimos, obtenemos un evento onChange, la vamos a manejar con un método de la clase que se debe crear, suele llamarse handleChange */}
+                        {/*Eventos con react, en un input cuando escribimos, obtenemos un evento onChange, la vamos a manejar con un método de la clase que se debe crear, suele llamarse handleChange */}
                     </div>
                     <div>
                         <label>Last Name</label>
