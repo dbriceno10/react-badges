@@ -41,18 +41,18 @@ class Badges extends React.Component {
         }
     }
     //junto a esa actualiación se llama a:
-    componentDidUpdate(propsPrevios, estadoPrevio){
-        console.log("5.componentDidUpdate")
-        console.log({
-            prevProps: propsPrevios, PrevState:estadoPrevio
-        })
+    // componentDidUpdate(propsPrevios, estadoPrevio){
+    //     console.log("5.componentDidUpdate")
+    //     console.log({
+    //         prevProps: propsPrevios, PrevState:estadoPrevio
+    //     })
 
-        console.log({
-            props: this.props,
-            state: this.state,
+    //     console.log({
+    //         props: this.props,
+    //         state: this.state,
 
-        })
-    }
+    //     })
+    // }
     // componentDidUpdate(prevProps, PrevState){
     //     console.log("5.componentDidUpdate")
     //     console.log({
@@ -61,9 +61,9 @@ class Badges extends React.Component {
     // }
 
     //Momento antes de que se vaya el componente de DOM
-    componentWillUnmount() {
-        //console.log("6.componentWillUnmount")
-    }
+    // componentWillUnmount() {
+    //     //console.log("6.componentWillUnmount")
+    // }
 
 
     render() {

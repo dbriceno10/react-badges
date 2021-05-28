@@ -24,8 +24,8 @@ class BadgeForm extends React.Component {
     //     })
     // }
     //handleChange, el cuál es el método que maneja la información del evento lo vamos a eliminar de acá, puesto que ahora esto se va a manejar desde la página, es decir, BadgeNew
-    handleClick = (e) =>{
-        e.preventDefault()
+    handleClick = e => {
+        // e.preventDefault()
         console.log("El formulario fue enviado")
         console.log(this.state)
     }
@@ -89,7 +89,7 @@ class BadgeForm extends React.Component {
                         />
                     </div>
                     </div>
-                    <button type="button" onClick={this.handleClick} className="btn btn-primary">Save</button>
+                    <button onClick={this.handleClick} className="btn btn-primary">Save</button>
                 </form>
             </React.Fragment>
         )
