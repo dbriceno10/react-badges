@@ -1,14 +1,13 @@
 import React from "react"
-//import Navbar from "../componets/navbar"
 import header from "../images/platziconf-logo.svg"
-import "./styles/BadgeNew.css"
+import "./styles/BadgeEdit.css"
 import Badge from "../componets/badge"
 import BadgeForm from "../componets/badgeForm"
 import api from "../api"
 import PageLoading from "../componets/pageLoading"
-class BadgeNew extends React.Component {
+class BadgeEdit extends React.Component {
         state = { 
-            loading: false,//este loading se inicializa en falso debido a que estamos enviando los datos
+            loading: true,//este loading se inicializa en verdadero ya que estamos iniciando con una petición, estamos usando el id creado con el badge para que la página nos devuelva el resultado de la página del badge en badgeEdit
             error: null,
             form: {
             firstName: "",
@@ -17,12 +16,25 @@ class BadgeNew extends React.Component {
             jobTitle: "",
             twitter: ""
         } 
-    }//inicializamos un state vacio, con una propiedad form también vacía
+    }
+
+    componentDidMount() {
+        this.fetchData()
+    }
+
+    fetchData = async (e) => {
+        this.setState({ loading: true, error: null })
+        try {
+            const data = await api.badges.read(
+                this.props.match.params.badgeId
+            )//read va a tomar el id del badge que nos interesa, usando los props, cada una de esas variables que insertamos en el path que declaramos en la ruta lo podemos acceder dentro del objeto params
+            this.setState({ loading: false, form: data })
+        } catch(error) {
+            this.setState({ loading: false, error: error })
+        }
+    }
     
-    
-    //form va a recibir y guardar la infomación del evento que acaba de ocurrir, esta información ahora le va a pertenecer a BadgeNew
-    
-    handleChange = e => {//para evitar que los datos del formulario se sobreestciban, vamos a "dejar caer" todos los valores que tenia el form anteriormente, y añadimos otro o sobre escribimos el que ya estaba guardado, usando los puntos suspensivos "..." que indica propagación de la propiedad (prop)
+    handleChange = e => {
         this.setState({
             form: {
                 ...this.state.form,
@@ -36,10 +48,10 @@ class BadgeNew extends React.Component {
         this.setState({ loading: true, error: null })
 
         try {
-            await api.badges.create(this.state.form)
+            await api.badges.update(
+                this.props.match.params.badgeId,
+                this.state.form)//El handleSubmit ya no es de crear (create), es de actualizar (update),que recibe el id y la información que queremos actualizar
             this.setState({ loading: false })
-
-            //Si hay existo, hacer que al guardar el badge en el formulario nos vayamos directamente a la página de la lista, recoerda que las páginas reciben 3 props, match, history y location
             this.props.history.push("/badges")
 
         } catch (error) {
@@ -53,9 +65,8 @@ class BadgeNew extends React.Component {
         }
         return(
             <React.Fragment>
-                {/**<Navbar/>*/}
-                <div className="BadgeNew__hero">
-                    <img className="BadgeNew__hero-img img-fluid" src={header} alt="Logo"/>
+                <div className="BadgeEdit__hero">
+                    <img className="BadgeEdit__hero-img img-fluid" src={header} alt="Logo"/>
                 </div>
 
                 <div className="container">
@@ -70,14 +81,12 @@ class BadgeNew extends React.Component {
                                 avatarUrl = "https://media-exp1.licdn.com/dms/image/C5603AQFILCh7FRKErA/profile-displayphoto-shrink_200_200/0/1617145732921?e=1626307200&v=beta&t=lkVAqzsfDRPW5nmUDPnXEVA38bpJYTI6R8KKdqWlvxs" />
                         </div>
                         <div className="col-6">
-                        <h1>New Attendant</h1>
-                        {/**Ahora esta información del evento se la vamos a pasar a BadgeForm como un prop, para que el formulario tenga acceso al evento y acceda a la inforación.
-                        Hay que pasar los varlores del formulario desde BadgeNew hasta BadgeForm */}
+                        <h1>Edit Attendant</h1>
                             <BadgeForm 
                                 onChange={this.handleChange}
                                 onSubmit={this.handleSubmit}
                                 formValues={this.state.form}
-                                error={this.state.error}//el error no siempre va a estar definido, puede ser un vacío, nulo, etc, depende de lo que regrese como error,en caso de haberlo
+                                error={this.state.error}
                             />
                         </div>
                     </div>
@@ -87,4 +96,4 @@ class BadgeNew extends React.Component {
     }
 }
 
-export default BadgeNew
+export default BadgeEdit

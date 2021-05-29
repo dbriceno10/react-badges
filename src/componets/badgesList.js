@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./styles/BadgesList.css"
 import Gravatar from "./gravatar"
+import "bootstrap/dist/css/bootstrap.css"
 class BadgesList extends React.Component{
     render(){
         if(this.props.badges.length === 0) {
@@ -17,17 +18,19 @@ class BadgesList extends React.Component{
                 {this.props.badges.map((badge)=>{
                 return(
                     <li key={badge.id} className="BadgesListItem">
-                        <Gravatar
-                            className="BadgesListItem__avatar"
-                            email={badge.email}
-                            />
-                        <div>
-                            <div><strong>{badge.firstName} {badge.lastName}</strong></div>
-                            <div className="Twitter__name">
-                            <span className="Twitter__logo"></span>@{badge.twitter}
+                        <Link className="text-reset text-decoration-none" to={`/badges/${badge.id}/edit`}>
+                            <Gravatar
+                                className="BadgesListItem__avatar"
+                                email={badge.email}
+                                />
+                            <div>
+                                <div><strong>{badge.firstName} {badge.lastName}</strong></div>
+                                <div className="Twitter__name">
+                                <span className="Twitter__logo"></span>@{badge.twitter}
+                                </div>
+                                <div>{badge.jobTitle}</div>
                             </div>
-                            <div>{badge.jobTitle}</div>
-                        </div>
+                        </Link>
                     </li>
                 )
                 })}
