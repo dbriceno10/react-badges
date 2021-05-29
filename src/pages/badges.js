@@ -7,6 +7,7 @@ import {Link} from "react-router-dom"
 import api from "../api"
 import PageLoading from "../componets/pageLoading"
 import PageError from "../componets/pageError"
+import MiniLoader from "../componets/miniLoader"
 //NOTA: Borré algunas notas sobre el ciclo de vida de los componentes, si quieres revisarlos regresa a ese commit o ve la notas
 class Badges extends React.Component {
     state = {//ahora vamos a traer los datos desde la api, se inicializan como undefinded
@@ -23,10 +24,15 @@ class Badges extends React.Component {
     //     }
     // }
 
-    componentDidMount() {
-        //console.log("3.componentDidMount()")
+    //console.log("3.componentDidMount()")
         //Este componente es el lugar adecuado para realizar una petición de datos, o actualización
-        this.fetchData()
+    componentDidMount() {
+        this.intervalID = setInterval(this.fetchData, 5000)//Hay que cancelarlo cuando la página se vaya
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalID)
+        //con esto evitamos que el intervalo siga trabajando aún cuando dejamos la página
     }
 
     //Este fetchData al que hacemos referencia (con this) es un método de la clase que estamos declarando, no el fetch nativo de javascript
@@ -67,9 +73,12 @@ class Badges extends React.Component {
 
 
     render() {
-        console.log("2/4.render()")
+        //console.log("2/4.render()")
         //manejar cuando loading = true
-        if(this.state.loading === true) {
+        // if(this.state.loading === true && this.state.data === undefined) {
+        //     return <PageLoading />
+        // }
+        if(this.state.loading === true && !this.state.data) {//Pide los datos de forma automática, la primera vez
             return <PageLoading />
         }
 
@@ -89,7 +98,7 @@ class Badges extends React.Component {
                 </div>
 
 
-                <div className="Badge__container">
+                <div className="Badges__container">
                     <div className="Badges__buttons">
                         {/* <a href="/badges/new" className="btn btn-primary">New Badge</a>
                         Para evitar el recargar la página completa vamos a sustituir el elemento a por un Link */}
@@ -97,8 +106,10 @@ class Badges extends React.Component {
                     </div>
                     <div className="Badges__list">
                         <div className="Badges__container">
-                        <BadgesList badges={this.state.data}/>
-                            
+                            <BadgesList badges={this.state.data}/>
+                            {/* Añadimos un indicador si está en loading */}
+                            {this.state.loading && <MiniLoader/>}
+                        
                         </div>
                     </div>
                     
