@@ -27,7 +27,7 @@ class Badges extends React.Component {
     //console.log("3.componentDidMount()")
         //Este componente es el lugar adecuado para realizar una petición de datos, o actualización
     componentDidMount() {
-        this.intervalID = setInterval(this.fetchData, 5000)//Hay que cancelarlo cuando la página se vaya
+        this.intervalID = setInterval(this.fetchData, 10000)//Hay que cancelarlo cuando la página se vaya
     }
 
     componentWillUnmount() {

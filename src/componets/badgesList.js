@@ -18,7 +18,8 @@ class BadgesList extends React.Component{
                 {this.props.badges.map((badge)=>{
                 return(
                     <li key={badge.id} className="BadgesListItem">
-                        <Link className="text-reset text-decoration-none" to={`/badges/${badge.id}/edit`}>
+                        <Link className="text-reset text-decoration-none" to={`/badges/${badge.id}`}>
+                        {/*Ahora En ves de enciar a edit para ver los detalles de la página vamos a enviar desde aquí a la página de details  */}
                             <Gravatar
                                 className="BadgesListItem__avatar"
                                 email={badge.email}
