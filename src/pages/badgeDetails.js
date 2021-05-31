@@ -1,50 +1,14 @@
+//Cuando el componente se encargar de presentar la información, es decir la interfaz, basta con colocar solo el nombre del componente, en cambio si va a trabahar con la lógica, es decir, traerlos datos por ejemplo, se le agrega container al nombre, esto era una convención en react para ese momento
 import React from "react"
 import confLogo from "../images/platziconf-logo.svg"
 import "./styles/BadgeDetails.css"
-import PageLoading from "../componets/pageLoading"
-import PageError from "../componets/pageError"
-import api from "../api"
 import Badge from "../componets/badge"
 import { Link } from "react-router-dom" 
-class BadgeDetails extends React.Component {
 
-    state = {
-        loading: true,
-        error: null,
-        data: undefined,
-        // data: {},
-    }
-
-    componentDidMount() {
-        this.fetchData()
-    }
-
-    fetchData = async () => {
-        this.setState({ loading: true, error: null })
-            
-        try {
-            //debemos pasar el id que lo obtenemos desde la url con this.props.match.params.badgeID
-            const data = await api.badges.read(
-                this.props.match.params.badgeId
-            ) 
-            this.setState({ loading: false, data: data })//si conseguimos los datos los vamos a guardar acá
-        } catch(error) {
-            this.setState({ loading: false, error: error })
-        }
-    }
-
-    render() {
-        if (this.state.loading) {
-        return <PageLoading />;
-        }
-    
-        if (this.state.error) {
-        return <PageError error={this.state.error} />;
-        }
-    
-        const badge = this.state.data;
-    
-        return (
+const BadgeDetails = (props) => {
+    //obtenemos el badge de la siguiente manera
+    const badge = props.badge
+    return (
         <div>
             <div className="BadgeDetails__hero">
             <div className="container">
@@ -92,8 +56,7 @@ class BadgeDetails extends React.Component {
             </div>
             </div>
         </div>
-        )
-    }
+    )
 }
 
 export default BadgeDetails
