@@ -92,7 +92,7 @@ class BadgeDetails extends React.Component {
             </div>
             </div>
         </div>
-        );
+        )
     }
 }
 
