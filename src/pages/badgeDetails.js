@@ -1,5 +1,5 @@
 import React from "react"
-import Logo from "../images/platziconf-logo.svg"
+import confLogo from "../images/platziconf-logo.svg"
 import "./styles/BadgeDetails.css"
 import PageLoading from "../componets/pageLoading"
 import PageError from "../componets/pageError"
@@ -25,7 +25,7 @@ class BadgeDetails extends React.Component {
         try {
             //debemos pasar el id que lo obtenemos desde la url con this.props.match.params.badgeID
             const data = await api.badges.read(
-                this.props.match.params.badgeID
+                this.props.match.params.badgeId
             ) 
             this.setState({ loading: false, data: data })//si conseguimos los datos los vamos a guardar acá
         } catch(error) {
@@ -35,57 +35,64 @@ class BadgeDetails extends React.Component {
 
     render() {
         if (this.state.loading) {
-            return <PageLoading />
+        return <PageLoading />;
         }
+    
         if (this.state.error) {
-            return <PageError error={this.state.error} />
+        return <PageError error={this.state.error} />;
         }
-
-        const badge = this.state.data //para ahorrarme escribir esto a cada rato
-
+    
+        const badge = this.state.data;
+    
         return (
-            <React.Fragment>
-                <div className="BadgeDetails__hero">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-6">
-                                <img src={Logo} alt="Logo de la conferencia"/>
-                            </div>
-                            <div className="col-6 BadgeDetails__hero-attendant-name">
-                                {/* <h1>{this.state.data.firstName} {this.state.data.lastName}</h1> */}
-                                <h1>
-                                    {badge.firstName} {badge.lastName}
-                                </h1>
-                            </div>
-                        </div>
+        <div>
+            <div className="BadgeDetails__hero">
+            <div className="container">
+                <div className="row">
+                <div className="col-6">
+                    <img src={confLogo} alt="Logo de la Conferencia" />
+                </div>
+                <div className="col-6 BadgeDetails__hero-attendant-name">
+                    <h1>
+                    {badge.firstName} {badge.lastName}
+                    </h1>
+                </div>
+                </div>
+            </div>
+            </div>
+    
+            <div className="container">
+            <div className="row">
+                <div className="col">
+                <Badge
+                    firstName={badge.firstName}
+                    lastName={badge.lastName}
+                    email={badge.email}
+                    twitter={badge.twitter}
+                    jobTitle={badge.jobTitle}
+                />
+                </div>
+                <div className="col">
+                <h2>Actions</h2>
+                <div>
+                    <div>
+                    <Link
+                        className="btn btn-primary mb-4"
+                        to={`/badges/${badge.id}/edit`}
+                    >
+                        Edit
+                    </Link>
+                    </div>
+    
+                    <div>
+                    <button className="btn btn-danger">Delete</button>
                     </div>
                 </div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col">
-                            <Badge
-                                firstName={badge.firstName}
-                                lastName={badge.lastName}
-                                email={badge.email}
-                                twitter={badge.twitter}
-                                jobTitle={badge.jobTitle}
-                            />
-                        </div>
-                        <div className="col">
-                            <h2>Actions</h2>
-                            <div>
-                                <div>
-                                    <Link className="btn btn-primary mb-4" to={`/badges/${badge.id}/edit`}>Edit</Link>
-                                </div>
-                                <div>
-                                    <button className="btn btn-danger">Delete</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </React.Fragment>
-        )
+            </div>
+            </div>
+        </div>
+        );
     }
 }
 
