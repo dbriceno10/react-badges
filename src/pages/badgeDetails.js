@@ -4,6 +4,7 @@ import confLogo from "../images/platziconf-logo.svg"
 import "./styles/BadgeDetails.css"
 import Badge from "../componets/badge"
 import { Link } from "react-router-dom" 
+import ReactDOM from "react-dom"
 
 const BadgeDetails = (props) => {
     //obtenemos el badge de la siguiente manera
@@ -50,6 +51,13 @@ const BadgeDetails = (props) => {
     
                     <div>
                     <button className="btn btn-danger">Delete</button>
+                    {/* {ReactDOM.createPortal(qué, dónde)} */}
+                    {/* createPortal recibe dos argumentos, el qué voy a renderizar y dónde lo voy a renderizar, por ejemplo:
+                    "modal", tendríamos que buscarlo dentro de nuestro public index.html, donde debemos crear un nuevo nodo, donde lo vamos a renderizar */}
+                    {ReactDOM.createPortal(
+                        <h1>Hola, realmente no estoy aquí</h1>, document.getElementById("modal")
+                    )}
+
                     </div>
                 </div>
                 </div>
