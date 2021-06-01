@@ -39,6 +39,20 @@ this.setState({ modalIsOpen: true,})
         this.setState({ modalIsOpen: false,})
     }
 
+    handleDeleteBadge = async e => {
+        this.setState({ loading: true, error: null })
+
+        try {
+            await api.badges.remove(
+                this.props.match.params.badgeId//recuerda que el id del badge lo obtenemos de la URL a travez de params
+            )
+            this.props.history.push("/badges")//Esteprops no los da react-router, lo usamos para sacar al usuario de la página actual, modificando la URL insertando "/badges"
+            this.setState({ loading: false })
+        } catch(error) {
+            this.setState({ loading: false, error: error})
+        }
+    }
+
     render() {
         if (this.state.loading) {
         return <PageLoading />;
@@ -55,6 +69,7 @@ this.setState({ modalIsOpen: true,})
             onCloseModal={this.handleCloseModal}
             onOpenModal={this.handleOpenModal}
             modalIsOpen={this.state.modalIsOpen}
+            onDeleteBadge={this.handleDeleteBadge}
             badge={badge} />
         )
     }

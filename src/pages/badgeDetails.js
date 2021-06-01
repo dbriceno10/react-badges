@@ -5,7 +5,8 @@ import "./styles/BadgeDetails.css"
 import Badge from "../componets/badge"
 import { Link } from "react-router-dom" 
 // import ReactDOM from "react-dom"
-import Modal from "../componets/modal"
+//import Modal from "../componets/modal"
+import DeleteBadgeModal from "../componets/deleteBadgeModal"
 
 const BadgeDetails = (props) => {
     //obtenemos el badge de la siguiente manera
@@ -51,13 +52,16 @@ const BadgeDetails = (props) => {
                     </div>
     
                     <div>
-                    <button className="btn btn-danger">Delete</button>
+                    <button onClick={props.onOpenModal} className="btn btn-danger">Delete</button>
                     {/* {ReactDOM.createPortal(qué, dónde)} */}
                     {/* createPortal recibe dos argumentos, el qué voy a renderizar y dónde lo voy a renderizar, por ejemplo:
                     "modal", tendríamos que buscarlo dentro de nuestro public index.html, donde debemos crear un nuevo nodo, donde lo vamos a renderizar */}
-                    <Modal 
-                    isOpen={true} 
-                    onClose={props.onCloseModal}>Lorem Ipsum</Modal>
+                    <DeleteBadgeModal 
+                            isOpen={props.modalIsOpen} 
+                            onClose={props.onCloseModal}
+                            onDeleteBadge={props.onDeleteBadge}
+                        />
+                        {/* Como DeleteBadgeModal va a tener todo su contenido pre-definido, lo volvemos una etiqueta autoconclusiva */}
 
                     </div>
                 </div>

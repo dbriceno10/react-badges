@@ -12,7 +12,7 @@ const Modal = (props) => {
                 <div className="Modal__container">
                     <button onClick={props.onClose} className="Modal__close-button">X</button>
                     {props.children}
-                    {/* Usar children nos pemite que en un futururo podamos especifiar de qué es este modal, ya que por el momento solo estamos usando componentes genéricos.
+                    {/* Usar children nos pemite que en un futururo podamos especifiar de qué es este Modal, ya que por el momento solo estamos usando componentes genéricos.
                     Esta técnica de usar componentes genéricos, para luego crear uno nuevo especializado se llama composición, y es una técnica muy poderosa que todo buen desarrollador debe aprender  */}
                 </div>
             </div>
