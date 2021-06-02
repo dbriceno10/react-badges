@@ -8,7 +8,20 @@ import { Link } from "react-router-dom"
 //import Modal from "../componets/modal"
 import DeleteBadgeModal from "../componets/deleteBadgeModal"
 
+//Hagamos nuestro propio custom hooks
+const useIncreaseCount = (max) => {
+    const [count, setCount] = React.useState(0)
+    if (count > max) {
+        setCount(0)
+    }
+    return[count, setCount]
+}
 const BadgeDetails = (props) => {
+    // const [count, setCount] = React.useState(0) //React.useState("argumentoOpcional") nos va a regresar un arreglo con dos argumentos, es parecido a state y setState, con la diferencia que los nombres que tienen dichas variables se las damos nosotros. Al useState le podemos pasar un argumento para inicializar, pero es totalmente opcional
+    //const count = 3
+
+    const [count, setCount] = useIncreaseCount(4)
+
     //obtenemos el badge de la siguiente manera
     const badge = props.badge
     return (
@@ -43,6 +56,13 @@ const BadgeDetails = (props) => {
                 <h2>Actions</h2>
                 <div>
                     <div>
+                    {/* Vamos a añadir un botón contador */}
+                    <button onClick={() => {
+                        setCount(count + 1)
+                    }} className="btn btn-primary margin-right-4-global">
+                        Increase Count: {count}
+                    </button>
+                    {/*De momento solo estamos usando el cambio de estado que nos da hooks para incrementar el contador, no el setState de la clase */}
                     <Link
                         className="btn btn-primary mb-4"
                         to={`/badges/${badge.id}/edit`}
