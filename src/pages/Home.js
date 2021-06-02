@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-import './styles/Home.css';
-import platziconfLogoImage from '../images/platziconf-logo.svg';
+import './styles/Home.css'
+//import platziconfLogoImage from '../images/platziconf-logo.svg'
+import spaceConfLogoImage from "../images/space.png"
 // import astronautsImage from '../images/astronauts.svg';
 import DrStone from "../images/Dr.Stone.jpg"
 
@@ -14,13 +15,13 @@ export default class Home extends Component {
           <div className="row">
             <div className="Home__col col-12 col-md-4">
               <img
-                src={platziconfLogoImage}
-                alt="Platzi Conf Logo"
-                className="img-fluid mb-2"
+                src={spaceConfLogoImage}
+                alt="Space Conf Logo"
+                className="img-fluid mb-2 space-logo img-fluid"
               />
 
               {/* <h1>Badge Management System</h1> */}
-              <h1>Platzi Badges: App para aplicar React JS</h1>
+              <h1>Space Badges: Registrate Para la nueva convención espacial</h1>
               <Link className="btn btn-primary" to="/badges">
                 Start
               </Link>
