@@ -14,17 +14,17 @@ export default class Home extends Component {
         <div className="container">
           <div className="row">
             <div className="Home__col col-12 col-md-4">
-              <img
-                src={spaceConfLogoImage}
-                alt="Space Conf Logo"
-                className="img-fluid mb-2 space-logo img-fluid"
-              />
+              <div className="title-container">
+                <img
+                  src={spaceConfLogoImage}
+                  alt="Space Conf Logo"
+                  className="img-fluid mb-2 space-logo img-fluid"
+                />
+                {/* <h1>Badge Management System</h1> */}
+                <h1>Space Badges: Registrate Para la nueva convención espacial</h1>
+                <Link className="btn btn-primary btn-start" to="/badges">Start</Link>
+              </div>
 
-              {/* <h1>Badge Management System</h1> */}
-              <h1>Space Badges: Registrate Para la nueva convención espacial</h1>
-              <Link className="btn btn-primary" to="/badges">
-                Start
-              </Link>
             </div>
 
             <div className="Home__col d-none d-md-block col-md-8">
