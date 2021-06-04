@@ -1,6 +1,6 @@
 import React from "react"
 import "./styles/Badges.css"
-import ConfLogo from "../images/ingress4.png"
+import ConfLogo from "../images/ingress5.png"
 import ReactLogo from "../images/react-logo3.svg"
 // import ConfLogo from "../images/space.png"
 import BadgesList from "../componets/badgesList"
@@ -88,28 +88,47 @@ class Badges extends React.Component {
             return <PageError error={this.state.error} />
         }
         return (
-            <React.Fragment>
-                <div className="Badges">
+            <div className="fondo">
+                {/* <div className="Badges">
                     <div className="Badges__hero">
                         <div className="Badges__container">
                             <div className="badge-logos-container">
-                                <img className="Badges_conf-logo Badges_conf-logo-width" src={ConfLogo} alt="Conf Logo" />
-                                <img className="Badges_conf-logo react-logo" src={ReactLogo} alt="Logo de React js" />
+                                <Link to="/comingson"><img className="Badges_conf-logo Badges_conf-logo-width" src={ConfLogo} alt="Conf Logo" /></Link>
+                                <a href="https://es.reactjs.org/" target="_blank"><img className="Badges_conf-logo react-logo" src={ReactLogo} alt="Logo de React js" /></a>
+                            </div>
+                            <div className="Badges__buttons">
+                                
+                                <Link to="/badges/new" className="btn btn-primary">New Badge</Link>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="Badges__hero">
                     <div className="Badges__container">
                         <div className="Badges__buttons">
-                            {/* <a href="/badges/new" className="btn btn-primary">New Badge</a>
-                            Para evitar el recargar la página completa vamos a sustituir el elemento a por un Link */}
                             <Link to="/badges/new" className="btn btn-primary">New Badge</Link>
                         </div>
+
+                        
+                        
                         <div className="Badges__list">
                             <div className="Badges__container">
                                 <BadgesList badges={this.state.data}/>
+                                <div className="Badges">
+                                    <div className="Badges__hero">
+                                        <div className="Badges__container">
+                                            <div className="badge-logos-container">
+                                                <Link to="/comingson"><img className="Badges_conf-logo Badges_conf-logo-width" src={ConfLogo} alt="Conf Logo" /></Link>
+                                                <a href="https://es.reactjs.org/" target="_blank"><img className="Badges_conf-logo react-logo" src={ReactLogo} alt="Logo de React js" /></a>
+                                            </div>
+                                        {/* <div className="Badges__buttons">
+
+                                        <Link to="/badges/new" className="btn btn-primary">New Badge</Link>
+                                        </div> */}
+                                        </div>
+                                    </div>
+                                </div>
                                 {/* Añadimos un indicador si está en loading */}
                                 {this.state.loading && <MiniLoader/>}
                             
@@ -118,7 +137,8 @@ class Badges extends React.Component {
                         
                     </div>
                 </div>
-            </React.Fragment>
+                
+            </div>
         )
     }
 }

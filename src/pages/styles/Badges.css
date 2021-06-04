@@ -10,8 +10,8 @@
   width: 100%;
   padding: 2rem 0;
   /* background: url('../../images/stars.svg'), #1B1B25; */
-  background: url('../../images/stars.svg'),var(--deep-space-gradient);
-  background-repeat: repeat;
+  /* background: url('../../images/stars.svg'),var(--deep-space-gradient);
+  background-repeat: repeat; */
   /* margin-bottom: 1rem; */
 }
 
@@ -44,10 +44,22 @@
 .Badges__buttons {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
+  margin-top: 2rem;
+}
+
+.Badges__buttons:hover {
+  opacity: 90%;
 }
 
 .badge-logos-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+}
+
+.fondo {
+  background: url('../../images/stars.svg'),var(--deep-space-gradient);
+  background-repeat: repeat;
+  width: 100%;
 }
