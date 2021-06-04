@@ -1,6 +1,7 @@
 import React from "react"
 import "./styles/Badges.css"
-import ConfLogo from "../images/badge-header.svg"
+import ConfLogo from "../images/ingress4.png"
+import ReactLogo from "../images/react-logo3.svg"
 // import ConfLogo from "../images/space.png"
 import BadgesList from "../componets/badgesList"
 import {Link} from "react-router-dom"
@@ -91,27 +92,31 @@ class Badges extends React.Component {
                 <div className="Badges">
                     <div className="Badges__hero">
                         <div className="Badges__container">
-                            <img className="Badges_conf-logo" src={ConfLogo} alt="Conf Logo" />
+                            <div className="badge-logos-container">
+                                <img className="Badges_conf-logo Badges_conf-logo-width" src={ConfLogo} alt="Conf Logo" />
+                                <img className="Badges_conf-logo react-logo" src={ReactLogo} alt="Logo de React js" />
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
-                <div className="Badges__container">
-                    <div className="Badges__buttons">
-                        {/* <a href="/badges/new" className="btn btn-primary">New Badge</a>
-                        Para evitar el recargar la página completa vamos a sustituir el elemento a por un Link */}
-                        <Link to="/badges/new" className="btn btn-primary">New Badge</Link>
-                    </div>
-                    <div className="Badges__list">
-                        <div className="Badges__container">
-                            <BadgesList badges={this.state.data}/>
-                            {/* Añadimos un indicador si está en loading */}
-                            {this.state.loading && <MiniLoader/>}
-                        
+                <div className="Badges__hero">
+                    <div className="Badges__container">
+                        <div className="Badges__buttons">
+                            {/* <a href="/badges/new" className="btn btn-primary">New Badge</a>
+                            Para evitar el recargar la página completa vamos a sustituir el elemento a por un Link */}
+                            <Link to="/badges/new" className="btn btn-primary">New Badge</Link>
                         </div>
+                        <div className="Badges__list">
+                            <div className="Badges__container">
+                                <BadgesList badges={this.state.data}/>
+                                {/* Añadimos un indicador si está en loading */}
+                                {this.state.loading && <MiniLoader/>}
+                            
+                            </div>
+                        </div>
+                        
                     </div>
-                    
                 </div>
             </React.Fragment>
         )
