@@ -1,7 +1,7 @@
 import React from "react"
 import "./styles/Badges.css"
-//import Navbar from "../componets/navbar"
 import ConfLogo from "../images/badge-header.svg"
+// import ConfLogo from "../images/space.png"
 import BadgesList from "../componets/badgesList"
 import {Link} from "react-router-dom"
 import api from "../api"
@@ -88,7 +88,6 @@ class Badges extends React.Component {
         }
         return (
             <React.Fragment>
-                {/**<Navbar/>*/}
                 <div className="Badges">
                     <div className="Badges__hero">
                         <div className="Badges__container">

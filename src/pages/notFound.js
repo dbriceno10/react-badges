@@ -1,6 +1,6 @@
 import React from "react"
 import "./styles/Home.css"
-import "./styles/error.css"
+import "./styles/notFound.css"
 import "bootstrap/dist/css/bootstrap.css"
 import Error404 from "../images/Error404.jpg"
 import {Link} from "react-router-dom"
