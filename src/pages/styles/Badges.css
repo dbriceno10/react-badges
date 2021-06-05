@@ -59,9 +59,9 @@
 }
 
 .fondo {
-  background: url('../../images/stars.svg'),var(--deep-space-gradient);
+  /* background: url('../../images/stars.svg'),var(--deep-space-gradient);
   background-repeat: repeat;
-  width: 100%;
+  width: 100%; */
 }
 
 .miniloader {

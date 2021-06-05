@@ -6,15 +6,7 @@
   /* --deep-space-gradient: linear-gradient(90deg, rgba(1,0,42,1) 0%, rgba(25,40,81,1) 35%); */
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
-  background: url("../../images/stars.svg"), rgba(0,0,0,1);
-  /* background-color: var(--deep-sapace);
-  background-image: ("../../images/stars.svg"); */
-  background-repeat: repeat;
-  position: absolute;
-}
+
 
 .lds-grid {
   display: inline-block;
