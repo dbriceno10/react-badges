@@ -9,7 +9,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  background: url("../../images/stars.svg"), var(--deep-sapace);
+  background: url("../../images/stars.svg"), rgba(0,0,0,1);
   /* background-color: var(--deep-sapace);
   background-image: ("../../images/stars.svg"); */
   background-repeat: repeat;
