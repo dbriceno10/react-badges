@@ -5,7 +5,8 @@ import './styles/Loader.css';
 export default class Loader extends Component {
   render() {
     return (
-      <div className="lds-grid">
+      // <div className="background-loader">
+        <div className="lds-grid">
         <div />
         <div />
         <div />
@@ -16,6 +17,7 @@ export default class Loader extends Component {
         <div />
         <div />
       </div>
+      //</div>
     );
   }
 }

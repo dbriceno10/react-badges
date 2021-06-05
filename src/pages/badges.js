@@ -130,7 +130,9 @@ class Badges extends React.Component {
                                     </div>
                                 </div>
                                 {/* Añadimos un indicador si está en loading */}
-                                {this.state.loading && <MiniLoader/>}
+                                <div className="miniloader">
+                                    {this.state.loading && <MiniLoader/>}
+                                </div>
                             
                             </div>
                         </div>

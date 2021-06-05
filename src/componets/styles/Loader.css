@@ -1,3 +1,21 @@
+:root {
+  --deep-sapace: #01002a;
+  --mid-deep-space: #192851;
+  --deep-space-gradient: linear-gradient(180deg, rgba(0,0,0,1) 35%, rgba(1,0,42,1) 100%);
+  /* --deep-space-graduent: linear-gradient(180deg, rgba(0,0,0,1) 35%, rgba(1,0,42,1) 70%); */
+  /* --deep-space-gradient: linear-gradient(90deg, rgba(1,0,42,1) 0%, rgba(25,40,81,1) 35%); */
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: url("../../images/stars.svg"), var(--deep-sapace);
+  /* background-color: var(--deep-sapace);
+  background-image: ("../../images/stars.svg"); */
+  background-repeat: repeat;
+  position: absolute;
+}
+
 .lds-grid {
   display: inline-block;
   position: relative;
@@ -10,7 +28,8 @@
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #000;
+  /* background: #000; */
+  background: #fff;
   animation: lds-grid 1.2s linear infinite;
 }
 
