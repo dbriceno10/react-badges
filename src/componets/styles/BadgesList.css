@@ -41,7 +41,7 @@
 }
 
 .BadgesListItem:hover {
-  background: radial-gradient(circle, rgba(238,238,238,1) 70%, rgba(97,218,251,1) 75%);;
+  background: radial-gradient(circle, rgba(238,238,238,1) 70%, rgba(97,218,251,1) 75%);
 }
 
 .BadgesListItem__avatar {
@@ -73,11 +73,12 @@
   background-position: center;
 }
 .filter-label {
-  color: white;
-  font-size: 1.4rem;
+  color: rgba(97,218,251,1);
+  font-size: 1.5rem;
   text-align: center;
   margin-top: 15px;
   vertical-align: center;
+  font-weight: bold;
 }
 
 .form-control {
