@@ -1,6 +1,5 @@
 import React from "react"
-//  
-
+import "./styles/badgeForm.css"
 class BadgeForm extends React.Component {
     
     // handleChange = (e) =>{
@@ -37,6 +36,7 @@ class BadgeForm extends React.Component {
                             type="text" 
                             name="firstName"
                             value={this.props.formValues.firstName}
+                            required
                         />
                         {/*Eventos con react, en un input cuando escribimos, obtenemos un evento onChange, la vamos a manejar con un método de la clase que se debe crear, suele llamarse handleChange */}
                     </div>
@@ -48,6 +48,7 @@ class BadgeForm extends React.Component {
                             type="text" 
                             name="lastName"
                             value={this.props.formValues.lastName}
+                            required
                         />
                     </div>
                     <div>
@@ -57,6 +58,7 @@ class BadgeForm extends React.Component {
                             type="email" 
                             name="email"
                             value={this.props.formValues.email}
+                            required
                         />
                     </div>
                     <div>
@@ -67,6 +69,7 @@ class BadgeForm extends React.Component {
                             type="text" 
                             name="jobTitle"
                             value={this.props.formValues.jobTitle}
+                            required
                         />
                         <div>
                         <label>Twitter</label>
@@ -76,10 +79,13 @@ class BadgeForm extends React.Component {
                             type="text" 
                             name="twitter"
                             value={this.props.formValues.twitter}
+                            required
                         />
                     </div>
                     </div>
-                    <button onClick={this.handleClick} className="btn btn-primary">Save</button>
+                    <div className="save-button-container">
+                        <button onClick={this.handleClick} className="btn btn-primary">Save</button>
+                    </div>
                     {/* vamos a desplegar un elmento condicionalmente, si el error existe (true, no es nulo), vamos a desplegra el siguiente párrafo */}
                     {this.props.error && <p className="text-danger" >{this.props.error.message}</p>}
                 </form>
