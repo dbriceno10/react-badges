@@ -52,25 +52,32 @@
   height: 80px;
 }
 .Twitter__name {
-  color: #1da1f2;
+  /* color: #1da1f2; */
   
 }
 .Twitter__logo {
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
-  /* background: url('../../images/Twitter_Social_Icon_Circle_Color.svg'); */
-  background-color: #1da1f2;
-  border-radius: 100%;
+  /* background-image: url("../../images/twitter.svg"); */
+  /* background-repeat: no-repeat;
+  background-position: center; */
+  /* background-color: #1da1f2; */
+  /* border-radius: 100%; */
   margin-right: 0.3rem;
   vertical-align: middle;
 }
-
+.Twitter__logo-img {
+  display: inline-block;
+  width: 1.5rem;
+  background-position: center;
+}
 .filter-label {
   color: white;
   font-size: 1.4rem;
   text-align: center;
   margin-top: 15px;
+  vertical-align: center;
 }
 
 .form-control {

@@ -3,7 +3,24 @@ import { Link } from "react-router-dom"
 import "./styles/BadgesList.css"
 import Gravatar from "./gravatar"
 import "bootstrap/dist/css/bootstrap.css"
+import twitterLogo from "../images/twitter.svg"
 class BadgesListItem extends React.Component {
+//     <ul className="list-unstyled BadgesList">
+//     {this.props.badges.map((badge)=>{
+//     return(
+//         <li key={badge.id} className="BadgesListItem">
+//             <img src={badge.avatarUrl} alt="" className="BadgesListItem__avatar"/>
+//             <div>
+//                 <div><strong>{badge.firstName} {badge.lastName}</strong></div>
+//                 <div className="Twitter__name">
+//                 <span className="Twitter__logo"></span>@{badge.twitter}
+//                 </div>
+//                 <div>{badge.jobTitle}</div>
+//             </div>
+//         </li>
+//     )
+//     })}
+// </ul>
     render() {
         return (
             <div className="BadgesListItem">
@@ -15,8 +32,10 @@ class BadgesListItem extends React.Component {
                     <b>
                         {this.props.badge.firstName} {this.props.badge.lastName}
                     </b>
-                    <br />@{this.props.badge.twitter}
-                    <br />
+                    <div className="Twitter__name">
+                    <span className="Twitter__logo"><img className="Twitter__logo-img" src={twitterLogo} alt="logo de twitter"/></span>
+                    @{this.props.badge.twitter}
+                    </div>
                     {this.props.badge.jobTitle}
                     </div>
             </div>
