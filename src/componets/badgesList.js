@@ -81,7 +81,7 @@ const BadgesList = (props) => {
     return (
     <div className="BadgesList">
     <div className="form-group mb-4">
-        <label>Filter Badges</label>
+        <label className="filter-label">Filter Badges</label>
         <input 
             type="text" 
             className="form-control" 
