@@ -66,7 +66,7 @@ class BadgeEdit extends React.Component {
         return(
             <React.Fragment>
                 <div className="BadgeEdit__hero">
-                    <img className="BadgeEdit__hero-img img-fluid" src={header} alt="Logo"/>
+                    {/* <img className="BadgeEdit__hero-img img-fluid" src={header} alt="Logo"/> */}
                 </div>
 
                 <div className="container">

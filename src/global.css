@@ -16,11 +16,12 @@
 
 body {
   font-family: 'Lato', 'Helvetica Neue', sans-serif;
-  background-image: url("./images/stars.svg");
+  background: url("./images/stars.svg"), var(--deep-space-gradient);
   background-repeat: repeat;
-  background-color: var(--deep-space-gradient);
+  /* background-color: var(--deep-space-gradient); */
   width: 100vw;
-  height: 100vh;
+  /* min-height: 100vh; */
+  background-attachment: fixed;
 }
 
 h1 {
@@ -86,6 +87,6 @@ a.link-unstyled:hover {
 
 /*Estilos anexados*/
 
-.margin-right-4-global {
+/* .margin-right-4-global {
   margin: 10px !important;
-}
+} */

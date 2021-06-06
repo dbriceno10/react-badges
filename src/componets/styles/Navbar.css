@@ -35,3 +35,11 @@
   opacity: 90%;
   /* background-image: url(); */
 }
+
+/* body {
+  background-image: url("../../images/stars.svg");
+  background-repeat: repeat;
+  background-color: var(--deep-space-gradient);
+  width: 100vw;
+  height: 100vh;
+} */
