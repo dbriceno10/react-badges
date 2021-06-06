@@ -6,3 +6,18 @@
   min-height: 100vh;
   width: 100%;
 }
+
+.error-img {
+  width: 400px;
+  border-radius: 8px;
+}
+
+@media (max-width: 400px) {
+  .error-img {
+      width: 320px;
+  }
+}
+
+.PageError h1 {
+  margin: 40px;
+}
