@@ -75,8 +75,8 @@ const BadgesList = (props) => {
         if (filteredBadges.length === 0) {//ahora nos interesa que regrese los que concida con el filter
         return (
             <React.Fragment>
-                <div className="form-group mb-4">
-                    <label>Filter Badges</label>
+                <div className="form-group mb-4 filter-container">
+                    <label className="filter-label">Filter Badges</label>
                     <input 
                         type="text" 
                         className="form-control" 
@@ -88,10 +88,10 @@ const BadgesList = (props) => {
                     />
                 </div>
                 <div>
-                    <h3>No badges were found</h3>
-                    <Link className="btn btn-primary" to="/badges/new">
+                    <h3 className="not-found-message">No badges were found</h3>
+                    {/* <Link className="btn btn-primary" to="/badges/new">
                         Create new badge
-                    </Link>
+                    </Link> */}
                 </div>
             </React.Fragment>
         );
@@ -99,11 +99,11 @@ const BadgesList = (props) => {
 
     return (
     <div className="BadgesList">
-    <div className="form-group mb-4">
+    <div className="form-group mb-4 filter-container">
         <label className="filter-label">Filter Badges</label>
         <input 
             type="text" 
-            className="form-control" 
+            className="form-control from-control-filter" 
             value={query}
             onChange={(e) => {
                 console.log(e.target.value)
@@ -132,4 +132,4 @@ const BadgesList = (props) => {
     
 }
 
-export default BadgesList;
+export default BadgesList

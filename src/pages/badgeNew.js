@@ -71,7 +71,7 @@ class BadgeNew extends React.Component {
                                 avatarUrl = "https://media-exp1.licdn.com/dms/image/C5603AQFILCh7FRKErA/profile-displayphoto-shrink_200_200/0/1617145732921?e=1626307200&v=beta&t=lkVAqzsfDRPW5nmUDPnXEVA38bpJYTI6R8KKdqWlvxs" />
                         </div>
                         <div className="col-6">
-                            <h1>New Attendant</h1>
+                            <h1 className="h1-title">New Attendant</h1>
                             {/**Ahora esta información del evento se la vamos a pasar a BadgeForm como un prop, para que el formulario tenga acceso al evento y acceda a la inforación.
                             Hay que pasar los varlores del formulario desde BadgeNew hasta BadgeForm */}
                                 <BadgeForm 

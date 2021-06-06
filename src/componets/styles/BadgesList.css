@@ -73,7 +73,8 @@
   background-position: center;
 }
 .filter-label {
-  color: rgba(97,218,251,1);
+  /* color: rgba(97,218,251,1); */
+  color: #fff;
   font-size: 1.5rem;
   text-align: center;
   margin-top: 15px;
@@ -81,8 +82,22 @@
   font-weight: bold;
 }
 
-.form-control {
+.form-control-filter {
   border-radius: 8px;
   margin-top: 15px;
   margin-bottom: 30px;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+  height: auto;
+  background: #1B1B25;
+  justify-content: center;
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 10px;
 }

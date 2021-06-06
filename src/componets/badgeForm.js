@@ -26,7 +26,7 @@ class BadgeForm extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <form onSubmit={this.props.onSubmit}>
+                <form className="form-container" onSubmit={this.props.onSubmit}>
                 {/*Ya no vamos a usar el método declarado, usaremos el prop que maneja el cambio  */}
                     <div className="form-group">
                         <label>Frist Name</label>
