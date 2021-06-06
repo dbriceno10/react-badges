@@ -10,8 +10,8 @@
 
 .Badge {
   background: #FFFFFF;
-  box-shadow: inset 4px 4px 8px 0 rgba(0, 0, 0, 0.10);
-  
+  /* box-shadow: inset 4px 4px 8px 0 rgba(0, 0, 0, 0.10); */
+  box-shadow: inset 2px 4px 8px 0 rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   overflow: hidden;
   height: 380px;

@@ -95,3 +95,11 @@ a.link-unstyled:hover {
   color: #fff;
   text-align: center;
 }
+
+.container-modal-buttons {
+  margin: 0 auto;
+}
+
+.container-modal-buttons button {
+  margin: 10px;
+}

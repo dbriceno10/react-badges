@@ -8,9 +8,9 @@ const DeleteBadgeModal = (props) => {
             <h1>Are You Sure?</h1>
             <p>You are about to delete this badge.</p>
         </div>
-        <div className="container-fluid">
+        <div className="container-modal-buttons">
             <button onClick={props.onDeleteBadge} className="btn btn-danger margin-right-4-global mr-4">Delete</button>
-            <button onClick={props.onCloseModal} className=" btn btn-primary">Cancel</button>
+            <button onClick={props.onClose} className=" btn btn-primary">Cancel</button>
         </div>
     </Modal>
 } 
