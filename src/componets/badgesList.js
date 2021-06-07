@@ -76,7 +76,7 @@ const BadgesList = (props) => {
         return (
             <React.Fragment>
                 <div className="form-group mb-4 filter-container">
-                    <label className="filter-label">Filter Badges</label>
+                    <label className="filter-label">Search Badges</label>
                     <input 
                         type="text" 
                         className="form-control" 
@@ -100,7 +100,7 @@ const BadgesList = (props) => {
     return (
     <div className="BadgesList">
     <div className="form-group mb-4 filter-container">
-        <label className="filter-label">Filter Badges</label>
+        <label className="filter-label">Search Badges</label>
         <input 
             type="text" 
             className="form-control from-control-filter" 
